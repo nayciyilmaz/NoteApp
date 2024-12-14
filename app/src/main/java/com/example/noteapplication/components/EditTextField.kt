@@ -13,13 +13,15 @@ fun EditTextField(
     onValue: (String) -> Unit,
     label: String,
     keyboardOptions: KeyboardOptions,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    singleLine: Boolean
 ) {
     TextField(
         value = text,
         onValueChange = onValue,
         label = { Text(label) },
         keyboardOptions = keyboardOptions,
-        modifier = modifier
+        modifier = modifier,
+        singleLine = singleLine
     )
 }

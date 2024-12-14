@@ -69,7 +69,8 @@ fun NoteScreen(
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next
                 ),
-                modifier = modifier.padding(top = 8.dp)
+                modifier = modifier.padding(top = 8.dp),
+                singleLine = true
             )
 
             EditTextField(
@@ -79,7 +80,8 @@ fun NoteScreen(
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
-                modifier = modifier.padding(top = 8.dp, bottom = 16.dp)
+                modifier = modifier.padding(top = 8.dp, bottom = 16.dp),
+                singleLine = true
             )
 
             Button(
@@ -116,20 +118,26 @@ fun NoteCardList(
                     modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column(modifier.padding(8.dp)) {
+                    Column(
+                        modifier
+                            .padding(8.dp)
+                            .weight(0.7f)
+                    ) {
                         Text(text = item.title, fontWeight = FontWeight.Bold)
                         Text(text = item.description, fontWeight = FontWeight.SemiBold)
                         Text(text = item.date)
                     }
 
-                    Spacer(modifier = modifier.width(150.dp))
+                    Spacer(modifier = modifier.weight(0.3f))
 
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = null,
-                        modifier = modifier.clickable {
-                            noteViewModel.deleteNote(item)
-                        }
+                        modifier = modifier
+                            .padding(end = 4.dp)
+                            .clickable {
+                                noteViewModel.deleteNote(item)
+                            }
                     )
                 }
             }
